@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Юліанни ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  transition: 1s;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 35px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 15px 40px rgba(255, 105, 180, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+img {
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #d63384;
+  font-size: 24px;
+}
+
+p {
+  color: #6c2a4d;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 10px;
+}
+
+.yes {
+  background-color: #ff4da6;
+  color: white;
+}
+
+.no {
+  background-color: #ffc2d1;
+  color: #a61e4d;
+  position: absolute;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 22px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+.final-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff99cc, #ff66b2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: 28px;
+  text-align: center;
+  padding: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <img src="photo.jpg" alt="Ми разом ❤️">
+
+  <h1>Юліанна Вікторівна, моя найдорожча людина в цьому світі ❤️</h1>
+
+  <p>
+    Кохана моя…<br><br>
+    Я безмежно вдячний долі за тебе.<br>
+    За кожен день, який ми проживаємо разом,
+    за кожен погляд, усмішку і дотик.<br>
+    Поруч з тобою я по-справжньому щасливий.<br><br>
+
+    Ти — найкрасивіша дівчина у світі.<br>
+    Дякую тобі за любов, тепло і ніжність.<br>
+    Дякую за нашу маленьку Лолу —
+    вона частинка нашого кохання.<br><br>
+
+    Я люблю тебе більше за все на світі ❤️
+  </p>
+
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">Так ❤️</button>
+    <button class="no" id="noBtn">Ні 🙈</button>
+  </div>
+</div>
+
+<div class="final-message" id="final">
+  💍 Юліанна, я найщасливіший чоловік поруч з тобою ❤️<br><br>
+  Дякую за кожен день разом.<br>
+  Я кохаю тебе безмежно.<br><br>
+  Назавжди твій ❤️
+</div>
+
+<audio id="music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Спроба автозапуску (у деяких браузерах потрібно перше торкання)
+window.addEventListener("click", function() {
+  document.getElementById("music").play();
+}, { once: true });
+
+function sayYes() {
+  document.getElementById("final").classList.add("show");
+  document.body.style.background = "#ff66b2";
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
